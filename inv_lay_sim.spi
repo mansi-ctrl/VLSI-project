@@ -1,0 +1,22 @@
+*** SPICE deck for cell inv_lay_sim{lay} from library cmos_lay
+*** Created on Tue Oct 06, 2020 14:22:54
+*** Last revised on Tue Oct 06, 2020 14:35:32
+*** Written on Tue Oct 06, 2020 15:14:13 by Electric VLSI Design System, version 9.07
+*** Layout tech: mocmos, foundry MOSIS
+*** UC SPICE *** , MIN_RESIST 4.0, MIN_CAPAC 0.1FF
+
+*** SUBCIRCUIT cmos_lay__inv FROM CELL inv{lay}
+.SUBCKT cmos_lay__inv gnd in out vdd
+Mnmos@0 out in gnd gnd N L=0.6U W=3U AS=15.75P AD=9.225P PS=25.5U PD=13.2U
+Mpmos@1 out in vdd vdd P L=0.6U W=6U AS=20.7P AD=9.225P PS=30.9U PD=13.2U
+.ENDS cmos_lay__inv
+
+*** TOP LEVEL CELL: inv_lay_sim{lay}
+Xinv@0 GND in out Vdd cmos_lay__inv
+
+* Spice Code nodes in cell cell 'inv_lay_sim{lay}'
+vdd vdd 0 DC 5
+vin in 0 dc 0
+.dc vin 0 5 1m
+.include F:\C5_models.txt
+.END
